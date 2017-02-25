@@ -49,8 +49,22 @@ class SpacePod {
 
     triangle(-this.halfW, -this.halfH, this.halfW, -this.halfH, 0, -this.H);
     rect(-this.halfW, -this.halfH, this.W, this.H);
-    quad(-(this.halfW * 0.9), this.halfH, this.halfW*0.9,this.halfH, -this.halfW, this.halfH+10, this.halfW, halfH+10);
+    thruster(0, this.halfH, this.W, this.H*(this.H*0.2));
+    rotate(PI/2);
+    quad(-(this.halfW * 0.6), this.halfH, this.halfW*0.6, this.halfH, this.halfW, halfH+10, -this.halfW, this.halfH+10);
+    rotate(PI);
+    quad(-(this.halfW * 0.6), this.halfH, this.halfW*0.6, this.halfH, this.halfW, halfH+10, -this.halfW, this.halfH+10);
 
     popMatrix();
   }
+  void thruster(int x, int y, int w, int h){
+    float aMult = 0.6;
+    float hw = w/2;
+    pushMatrix();
+    translate(x,y);
+    
+    quad(-(hw*aMult), 0, hw*aMult, 0, hw, h, -hw, h);
+    
+    popMatrix();  
+}
 }
